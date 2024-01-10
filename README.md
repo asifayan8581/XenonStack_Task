@@ -1,4 +1,4 @@
-# simple-django-project
+# Xenonstack Task2
 ## Installation
 
 ### Prerequisites
