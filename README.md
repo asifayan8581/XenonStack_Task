@@ -21,23 +21,7 @@ output of linux
 9. epsa1 user create ![image](https://github.com/20BCS4485/Xenonstack-assessment/assets/99709007/2b3cfd6c-1ce0-4e92-b796-16701c748e99)
 ![image](https://github.com/20BCS4485/Xenonstack-assessment/assets/99709007/19dee4a9-b13d-49d4-b1a1-de7a7f826934)
 
-
-
-
-ROUND 2
-![image](https://github.com/20BCS4485/Xenonstack-assessment/assets/99709007/9816c3d9-7720-43bc-8522-441399b05748)
-
-![image](https://github.com/20BCS4485/Xenonstack-assessment/assets/99709007/b38b26ea-8130-44ac-983f-641b263af402)
-
-
-
-
-
-
  
-
-
-
 
 
 
