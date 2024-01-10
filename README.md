@@ -1,48 +1,104 @@
-# XenonStack_Task
+# simple-django-project
+## Installation
 
+### Prerequisites
 
-# Xenonstack
+#### 1. Install Python
+Install ```python-3.7.2``` and ```python-pip```. Follow the steps from the below reference document based on your Operating System.
+Reference: [https://docs.python-guide.org/starting/installation/](https://docs.python-guide.org/starting/installation/)
 
-## Task 1
+#### 2. Install MySQL
+Install ```mysql-8.0.15```. Follow the steps form the below reference document based on your Operating System.
+Reference: [https://dev.mysql.com/doc/refman/5.5/en/](https://dev.mysql.com/doc/refman/5.5/en/)
+#### 3. Setup virtual environment
+```bash
+# Install virtual environment
+sudo pip install virtualenv
 
-## Linux
+# Make a directory
+mkdir envs
 
-A custom linux command internsctl was given by a customer for performing operations.
+# Create virtual environment
+virtualenv ./envs/
 
-## Features
-1. Using `$man internsctl` you can see the command's manual page so that you see the full documentation of the command similar to $man ls.
-2. Using `$internsctl --help` you can see the help document.
-3. Using `$internsctl --version` you can see the version of the command.
-4. Using `$internsctl cpu getinfo` you get cpu information of the server like the `lscpu` command.
-5. Using `$internsctl memory getinfo` you can get memory information of the server like the `free` command.
-6. Using `$internsctl user create <username>` you can create a new user on the server.
-7. Using `$internsctl user list` you can list all the regular users present on the server.
-8. Using `$internsctl user list --sudo-only` you can list all the users with sudo permissions on the server.
-9. Using `$internsctl file getinfo <file-name>` you can get some information about a file.
-10. Using `$internsctl file getinfo [options] <file-name>` in case you only want some specific information then you have a provision to use options like: `--size`, `-s` to print size; `--permissions`, `-p` print file permissions; `--owner`, `o` print file owner; `--last-modified`, `m`.
+# Activate virtual environment
+source envs/bin/activate
+```
 
-## Task 2
-## A website
-A website on something
+#### 4. Clone git repository
+```bash
+git clone "https://github.com/Manisha-Bayya/simple-django-project.git"
+```
 
-## Project Structure
-The project is divided into three main pages:
+#### 5. Install requirements
+```bash
+cd simple-django-project/
+pip install -r requirements.txt
+```
 
-1. Page (index.html)
-2. Login Page (login.html)
-3. Contact Us Page (contact.html)
+#### 6. Load sample data into MySQL
+```bash
+# open mysql bash
+mysql -u <mysql-user> -p
 
-## Setup and Installation
-Follow these steps to set up and run the project locally:
+# Give the absolute path of the file
+mysql> source ~/simple-django-project/world.sql
+mysql> exit;
 
-Clone the Repository: git clone `https://github.com/your-username/my-website.git cd my-website`
+```
+#### 7. Edit project settings
+```bash
+# open settings file
+vim panorbit/settings.py
 
-Install Dependencies: `npm install`
+# Edit Database configurations with your MySQL configurations.
+# Search for DATABASES section.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'world',
+        'USER': '<mysql-user>',
+        'PASSWORD': '<mysql-password>',
+        'HOST': '<mysql-host>',
+        'PORT': '<mysql-port>',
+    }
+}
 
-Database Setup: A. Ensure that you have MongoDB installed and running. B. Configure the database connection in server.js.
+# Edit email configurations.
+# Search for email configurations
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = '<your-email>'
+EMAIL_HOST_PASSWORD = '<your-email-password>'
+EMAIL_PORT = 587
 
-Run the Server: node server.js
+# save the file
+```
+#### 8. Run the server
+```bash
+# Make migrations
+python manage.py makemigrations
+python manage.py migrate
 
-Access the Website: Open your web browser and go to `http://localhost:3000` to view the website.
+# For search feature we need to index certain tables to the haystack. For that run below command.
+python manage.py rebuild_index
 
+# Run the server
+python manage.py runserver 0:8001
+
+# your server is up on port 8001
+```
+Try opening [http://localhost:8001](http://localhost:8001) in the browser.
+Now you are good to go.
+
+### 9. URLs
+#### Signup: [http://localhost:8001/signup](http://localhost:8001/signup)
+![](https://i.imgur.com/T1KkfXi.png)
+#### Login: [http://localhost:8001/login](http://localhost:8001/login)
+![](https://i.imgur.com/KvyiuU6.png)
+#### home for search: [http://localhost:8001/](http://localhost:8001/)
+![](https://i.imgur.com/234qAiS.png)
+#### country page: [http://localhost:8001/country/kenya](http://localhost:8001/country/kenya)
+![](https://i.imgur.com/3zh3YKd.png)
+#### Logout: [http://localhost:8001/logout](http://localhost:8001/logout)
 
