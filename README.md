@@ -52,7 +52,7 @@ source envs/bin/activate
 
 #### 4. Clone git repository
 ```bash
-git clone "https://github.com/Manisha-Bayya/simple-django-project.git"
+git clone "https://github.com/saif-ahmad/simple-django-project.git"
 ```
 
 #### 5. Install requirements
